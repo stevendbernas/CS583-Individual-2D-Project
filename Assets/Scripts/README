@@ -1,0 +1,29 @@
+Game Title: RC-F1
+Author: Steven Bernas
+Prof. Chris
+CS583 -2D Game Project
+
+Art:
+***I made the cars, track, menu (sprites) using powerpoint then took a screen ***capture and saved as .PNG file
+
+Sound:
+***I took a .mp3 file from sounds and modified the sound on my sound editior and used the scripts to make it surround sound
+
+Gameplay:
+***On runtime MenuScene is displayed, then click play button opens the TrackScene where the racing game starts
+
+***Controls on keyboard left arrow is to steer left, right arrow is to steer right, up arrow to speed up car, down arrow to slow down car
+
+***Blue car is the player 1, red and green car are AI cars
+
+***Special features: green arrow on track is to increases car speed and yellow arrow decreses car speed
+
+Defect Free: 
+***Found bugs earlier in development with 2D box colliders not leaving opening to take shorcuts on the track, fix was to overlap the 2D box colliders, currenly the game is ---defect free
+
+Fun factor/Creativity:
+
+***Playing the game is super fun and intense since the AI cars do not make mistakes, I tried to make the AI cars steer, speed up and slow down at corners to make it feel like ---you are racing against another human, adding the special features with the green and yellow arrow makes it more challenging since going over the wrong arrow could make you ---fall behind in the race or become ahead in the race
+
+Code:
+***Commented the code as best as I could for readability

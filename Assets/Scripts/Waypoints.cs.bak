@@ -1,0 +1,52 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Waypoints : MonoBehaviour
+{
+    public float sphereRadius = 1f; // Radius of the waypoint spheres
+    public Color waypointColor = Color.red; // Color for waypoints
+    public Color lineColor = Color.blue; // Color for lines between waypoints
+
+    private List<Transform> waypointsList = new List<Transform>(); // List to hold waypoints
+
+    private void OnDrawGizmos()
+    {
+        // Set Gizmo color for waypoints
+        Gizmos.color = waypointColor;
+
+        // Clear the list of waypoints
+        waypointsList.Clear();
+
+        // Loop through each child (waypoint) and draw a sphere at its position
+        foreach (Transform t in transform)
+        {
+            waypointsList.Add(t); // Add waypoint to the list
+            Gizmos.DrawWireSphere(t.position, sphereRadius);  // Draw wire sphere at the position of each waypoint
+        }
+
+        // Set Gizmo color for the lines connecting the waypoints
+        Gizmos.color = lineColor;
+
+        // Draw lines between waypoints
+        for (int i = 0; i < waypointsList.Count - 1; i++)
+        {
+            Gizmos.DrawLine(waypointsList[i].position, waypointsList[i + 1].position);
+        }
+    }
+
+    // Public method to get a waypoint by index
+    public Transform GetWaypoint(int index)
+    {
+        if (index >= 0 && index < waypointsList.Count)
+        {
+            return waypointsList[index];
+        }
+        return null; // Return null if index is out of bounds
+    }
+
+    // Public method to get the total number of waypoints
+    public int GetWaypointCount()
+    {
+        return waypointsList.Count;
+    }
+}

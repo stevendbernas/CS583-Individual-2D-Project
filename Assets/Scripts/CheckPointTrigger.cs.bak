@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class CheckPointTrigger : MonoBehaviour
+{
+    private LapManager lapManager;
+
+    private void Start()
+    {
+        lapManager = FindObjectOfType<LapManager>(); // Find the LapManager in the scene
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the object is tagged as "Car", "Car2", or "Car3"
+        if (other.CompareTag("Car") || other.CompareTag("Car2") || other.CompareTag("Car3"))
+        {
+            int carIndex = GetCarIndex(other.gameObject.tag); // Get the car index based on the tag
+            Debug.Log($"Car {carIndex + 1} passed checkpoint!");
+            lapManager.RegisterCheckpoint(carIndex); // Call the RegisterCheckpoint method with the car index
+        }
+    }
+
+    // Helper method to get the car index based on the tag
+    private int GetCarIndex(string carTag)
+    {
+        switch (carTag)
+        {
+            case "Car":
+                return 0; // Index for Car
+            case "Car2":
+                return 1; // Index for Car2
+            case "Car3":
+                return 2; // Index for Car3
+            default:
+                return -1; // Invalid index
+        }
+    }
+}
